@@ -3,13 +3,13 @@
 //  PowerAdapterConnector
 //
 //  Created by Ivan Brazhnikov on 18/11/2017.
-//  Copyright © 2017 Go About. All rights reserved.
+//  Copyright © 2017 Ivan Brazhnikov. All rights reserved.
 //
 
 import Foundation
 
 
-final class SkyPlugAdapterSyncWrapper {
+public final class SkyPlugAdapterSyncWrapper {
   
   private enum Event {
     case connect
@@ -77,7 +77,7 @@ final class SkyPlugAdapterSyncWrapper {
 
 extension SkyPlugAdapterSyncWrapper : SkyPlugSyncAdapter {
   
-  var searchTimeout: TimeInterval? {
+  public var searchTimeout: TimeInterval? {
     set {
       wrapped.searchTimeout = newValue
     }
@@ -86,35 +86,35 @@ extension SkyPlugAdapterSyncWrapper : SkyPlugSyncAdapter {
     }
   }
   
-  var lastReceivedState: SkyPlugAdapterState? {
+  public var lastReceivedState: SkyPlugAdapterState? {
     return wrapped.lastReceivedState
   }
   
-  func connect() throws {
+  public func connect() throws {
     try wait(for: .ready) {
       wrapped.connect()
     }
   }
   
-  func turnOn() throws {
+  public func turnOn() throws {
     try wait(for: .on) {
       wrapped.turnOn()
     }
   }
   
-  func turnOff() throws {
+  public func turnOff() throws {
     try wait(for: .off) {
       wrapped.turnOff()
     }
   }
   
-  func queryState() throws -> SkyPlugAdapterState?  {
+  public func queryState() throws -> SkyPlugAdapterState?  {
     return try wait(for: .query) {
       wrapped.queryState()
       } as? SkyPlugAdapterState
   }
   
-  func disconnect() throws {
+  public func disconnect() throws {
     try wait(for: .disconnect) {
       wrapped.disconnect()
     }
@@ -123,23 +123,23 @@ extension SkyPlugAdapterSyncWrapper : SkyPlugSyncAdapter {
 
 extension SkyPlugAdapterSyncWrapper : SkyPlugAdapterDelegate {
   
-  func scannedDidReady(_ scanner: SkyPlugAdapter) {
+  public func scannedDidReady(_ scanner: SkyPlugAdapter) {
     finish(.ready)
   }
   
-  func scannedDidDisconnect(_ scanner: SkyPlugAdapter, error: Error?) {
+  public func scannedDidDisconnect(_ scanner: SkyPlugAdapter, error: Error?) {
     finish(.disconnect, result: error)
   }
 
-  func scannedDidOn(_ scanner: SkyPlugAdapter, error: Error?) {
+  public func scannedDidOn(_ scanner: SkyPlugAdapter, error: Error?) {
     finish(.on, error: error)
   }
   
-  func scannedDidOff(_ scanner: SkyPlugAdapter, error: Error?) {
+  public func scannedDidOff(_ scanner: SkyPlugAdapter, error: Error?) {
     finish(.off, error: error)
   }
  
-  func scannedDidFinishQueryDeviceState(_ scanner: SkyPlugAdapter, error: Error?) {
+  public func scannedDidFinishQueryDeviceState(_ scanner: SkyPlugAdapter, error: Error?) {
     if let error = error {
       finish(.query, error: error)
     } else {
@@ -147,7 +147,7 @@ extension SkyPlugAdapterSyncWrapper : SkyPlugAdapterDelegate {
     }
   }
   
-  func scannedDidFailWithError(_ scanner: SkyPlugAdapter, fail: Error?) {
+  public func scannedDidFailWithError(_ scanner: SkyPlugAdapter, fail: Error?) {
     finishAll(error: fail)
   }
 }

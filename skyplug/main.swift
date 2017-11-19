@@ -3,25 +3,27 @@
 //  PowerAdapterConnector
 //
 //  Created by Ivan Brazhnikov on 18/11/2017.
-//  Copyright © 2017 Go About. All rights reserved.
+//  Copyright © 2017 Ivan Brazhnikov. All rights reserved.
 //
 
 import Cocoa
 
 Log.debugMode = Arguments.debug
 
-func main() throws {
-  
-  guard let action = Arguments.action else {
-    throw "No actions"
-  }
-  
-  let file = try ConfigFile(configDictionary: Arguments.config)
-  
-  let adapter = SkyPlugAdapterMakeDefault(configFile: file)
+func initializeAdapter() throws -> SkyPlugSyncAdapter {
+  let config = try SkyPlugAdapterConfig(configDictionary: Arguments.config)
+  let adapter = SkyPlugAdapterMakeDefault(config: config)
   if let timeoutString = Arguments.config["searchTimeout"], let timeout = TimeInterval(timeoutString) {
     adapter.searchTimeout = timeout
   }
+  return adapter
+}
+
+func main() throws {
+  guard let action = Arguments.action else {
+    throw "No actions"
+  }
+  let adapter = try initializeAdapter()
   defer {
     try? adapter.disconnect()
   }
@@ -33,7 +35,7 @@ func main() throws {
     try adapter.turnOff()
   case .query:
     let state = try adapter.queryState()
-    print(state?.description ?? SkyPlugAdapterState.unknownStateDescription)
+    print(Output.convert(state))
   }
 }
 

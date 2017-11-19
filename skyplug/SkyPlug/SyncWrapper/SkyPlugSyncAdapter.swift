@@ -3,12 +3,12 @@
 //  skyplug
 //
 //  Created by Ivan Brazhnikov on 19/11/2017.
-//  Copyright © 2017 Go About. All rights reserved.
+//  Copyright © 2017 Ivan Brazhnikov. All rights reserved.
 //
 
 import Foundation
 
-protocol SkyPlugSyncAdapter: class {
+public protocol SkyPlugSyncAdapter: class {
   var lastReceivedState: SkyPlugAdapterState? { get }
   var searchTimeout: TimeInterval? { get set }
   func connect() throws

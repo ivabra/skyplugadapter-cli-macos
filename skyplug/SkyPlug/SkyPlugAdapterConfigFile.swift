@@ -3,26 +3,33 @@
 //  PowerAdapterConnector
 //
 //  Created by Ivan Brazhnikov on 19/11/2017.
-//  Copyright © 2017 Go About. All rights reserved.
+//  Copyright © 2017 Ivan Brazhnikov. All rights reserved.
 //
 
 import Foundation
 
-struct ConfigFile {
+public struct SkyPlugAdapterConfig {
   
-  var serviceUUID: String!
-  var notifyCharacteristicUUID: String!
-  var valueCharacteristicUUID: String!
-  var onHexData: Data!
-  var offHexData: Data!
-  var queryHexData: Data!
-  var authorizationHexData: Data!
+  public struct ParseError: Error, CustomStringConvertible {
+    public let description: String
+    var localizedDescription: String {
+      return description
+    }
+  }
   
-  init(configDictionary: [String : String]) throws {
+  public var serviceUUID: String!
+  public var notifyCharacteristicUUID: String!
+  public var valueCharacteristicUUID: String!
+  public var onHexData: Data!
+  public var offHexData: Data!
+  public var queryHexData: Data!
+  public var authorizationHexData: Data!
+  
+  public init(configDictionary: [String : String]) throws {
     let configKeys = configDictionary.keys.flatMap { Keys(rawValue: $0) }
     let lostKeys = Keys.required.subtracting(configKeys)
     guard lostKeys.isEmpty else {
-      throw "Configuration file assert failure. No values for keys \(lostKeys.map { "'\($0.rawValue)'" }.joined(separator: ", "))"
+      throw ParseError(description: "Configuration file assert failure. No values for keys \(lostKeys.map { "'\($0.rawValue)'" }.joined(separator: ", "))")
     }
     configKeys.forEach {
       let value = configDictionary[$0.rawValue]
@@ -47,7 +54,8 @@ struct ConfigFile {
  
 }
 
-private extension ConfigFile {
+private extension SkyPlugAdapterConfig {
+  
   enum Keys: String {
     case serviceUUID
     case notifyCharacteristicUUID

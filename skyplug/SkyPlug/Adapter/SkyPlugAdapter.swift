@@ -3,15 +3,35 @@
 //  PowerAdapterConnector
 //
 //  Created by Ivan Brazhnikov on 18/11/2017.
-//  Copyright © 2017 Go About. All rights reserved.
+//  Copyright © 2017 Ivan Brazhnikov. All rights reserved.
 //
 
 import Foundation
 import CoreBluetooth
 
-final class SkyPlugAdapter: NSObject {
+public struct SkyPlugAdapterError: Error, CustomStringConvertible {
+  public let description: String
+  public let underlyingError: Error?
   
-  weak var delegate: SkyPlugAdapterDelegate?
+  init(description: String, error: Error?) {
+    self.description = description
+    self.underlyingError = error
+  }
+  
+  init(description: String) {
+    self.description = description
+    self.underlyingError = nil
+  }
+  
+  init(error: Error) {
+    self.description = error.localizedDescription
+    self.underlyingError = error
+  }
+}
+
+public final class SkyPlugAdapter: NSObject {
+  
+  public weak var delegate: SkyPlugAdapterDelegate?
   
   // MARK: Public constants
   
@@ -21,11 +41,11 @@ final class SkyPlugAdapter: NSObject {
   
   // MARK: Public properties
   
-  var onData: Data
-  var offData: Data
-  var queryData: Data
-  var authrorizationData: Data
-  var searchTimeout: TimeInterval?
+  public var onData: Data
+  public var offData: Data
+  public var queryData: Data
+  public var authrorizationData: Data
+  public var searchTimeout: TimeInterval?
   
  
   // MARK: Private properties
@@ -58,7 +78,7 @@ final class SkyPlugAdapter: NSObject {
   
   private let queue: DispatchQueue
   
-  init(serviceUUID: CBUUID,
+  public init(serviceUUID: CBUUID,
        notifyCharacteristicUUID: CBUUID,
        valueCharacteristicUUID: CBUUID,
        onData: Data,
@@ -85,27 +105,27 @@ final class SkyPlugAdapter: NSObject {
 // MARK: Public symbols
 extension SkyPlugAdapter {
   
-  func connect() {
+  public func connect() {
     self.enabled = true
   }
   
-  func disconnect() {
+  public func disconnect() {
     self.enabled = false
   }
   
-  final func turnOn() {
+  public final func turnOn() {
     send(bytes: onData) {
       isEnablingDevice = true
     }
   }
   
-  final func turnOff() {
+  public final func turnOff() {
     send(bytes: offData) {
       isDisablingDevice = true
     }
   }
   
-  final func queryState() {
+  public final func queryState() {
     send(bytes: queryData) {
       isQueryingsState = true
     }
@@ -154,7 +174,7 @@ private extension SkyPlugAdapter {
     queue.asyncAfter(deadline: .now() + duration) { [weak self] in
       guard let `self` = self else { return }
       if self.device == nil {
-        self.didFail(error: "A device is not found within \(duration) seconds")
+        self.didFail(cause:  "A device is not found within \(duration) seconds")
       }
     }
   }
@@ -163,7 +183,7 @@ private extension SkyPlugAdapter {
     Log.debug("Authorizing your device on the remote device...")
     havingDeviceOrFail { device in
       guard let valueCharacteristic = valueCharacteristic else {
-        didFail(error: "No value characteristic")
+        didFail(cause: "No value characteristic")
         return
       }
       isAuthorizing = true
@@ -175,7 +195,7 @@ private extension SkyPlugAdapter {
     Log.debug("Subscribing on update characteristic")
     havingDeviceOrFail { device in
       guard let notifyCharacteristic = self.notifyCharacteristic else {
-        didFail(error: "No notify characteristic")
+        didFail(cause: "No notify characteristic")
         return
       }
       device.setNotifyValue(true, for: notifyCharacteristic)
@@ -200,7 +220,7 @@ private extension SkyPlugAdapter {
     Log.debug("Sending bytes: \(bytes.map { $0.hexString }) to device")
     havingDeviceOrFail { device in
       guard let valueCharacteristic = valueCharacteristic else {
-        didFail(error: "No value characteristic")
+        didFail(cause: "No value characteristic")
         return
       }
       before()
@@ -210,7 +230,7 @@ private extension SkyPlugAdapter {
   
   private func havingDeviceOrFail(whenHasDevice: (CBPeripheral)->Void) {
     guard let device = device else {
-      didFail(error: "No device")
+      didFail(cause: "No device")
       return
     }
     whenHasDevice(device)
@@ -224,9 +244,14 @@ extension SkyPlugAdapter {
     delegate?.scannedDidReady(self)
   }
   
-  private func didFail(error: Error? = nil) {
+  private func didFail(error: Error) {
     Log.debug(error, "Fail!")
     delegate?.scannedDidFailWithError(self, fail: error)
+  }
+  
+  private func didFail(cause: String) {
+    let error = SkyPlugAdapterError(description: cause)
+    didFail(error: error)
   }
   
   private func didOff(error: Error?) {
@@ -254,10 +279,10 @@ extension SkyPlugAdapter {
     
     if isAuthorizing {
       isAuthorizing = false
-      if error == nil {
-        didReady()
-      } else {
+      if let error = error {
         didFail(error: error)
+      } else {
+        didReady()
       }
     }
     
@@ -279,7 +304,7 @@ extension SkyPlugAdapter {
           self.lastReceivedState = state
           didFinishQueringDeviceState(error: error)
         } else {
-          didFinishQueringDeviceState(error: "Invalid format")
+          didFinishQueringDeviceState(error: SkyPlugAdapterError(description: "Invalid bytes format"))
         }
       }
     }
@@ -291,17 +316,17 @@ extension SkyPlugAdapter {
 
 extension SkyPlugAdapter: CBCentralManagerDelegate {
   
-  func centralManagerDidUpdateState(_ central: CBCentralManager) {
+  public func centralManagerDidUpdateState(_ central: CBCentralManager) {
     Log.debug("CentralManager did update state: \(central.state)")
     if enabled {
       if central.state != .poweredOn {
-        didFail(error: "Invalid adapter state \"\(central.state)\"")
+        didFail(cause: "Invalid adapter state \"\(central.state)\"")
       }
       search()
     }
   }
   
-  func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+  public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
     Log.debug(("Central manager did disconver peripheral", peripheral, advertisementData))
     manager.stopScan()
     device = peripheral
@@ -309,20 +334,20 @@ extension SkyPlugAdapter: CBCentralManagerDelegate {
     connectDevice()
   }
   
-  func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+  public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
     Log.debug("Central manager did connect peripheral \(peripheral)")
     peripheral.delegate = self
     discoverDevice()
   }
   
-  func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+  public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
     Log.debug(error, "Central manager did disconnect peripheral \(peripheral)")
     device = nil
     peripheral.delegate = nil
     didDisconnect(error: error)
   }
   
-  func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
+  public func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
     Log.debug(error, "Central manager did fail to connect peripheral \(peripheral)")
     if let error = error {
       didFail(error: error)
@@ -334,21 +359,21 @@ extension SkyPlugAdapter: CBCentralManagerDelegate {
 // MARK: CBPeripheralDelegate
 
 extension SkyPlugAdapter : CBPeripheralDelegate {
-  func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+  public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
     Log.debug(error, "Peripheral did disconver services \(peripheral.services?.description ?? "nil")")
     if let error = error {
       didFail(error: error)
       return
     }
     guard let service = peripheral.services?.first (where: { $0.uuid == serviceUUID }) else {
-      didFail(error: "No service")
+      didFail(cause: "No service")
       return
     }
     self.service = service
     peripheral.discoverCharacteristics([valueCharacteristicUUID, notifyCharacteristicUUID], for: service)
   }
   
-  func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+  public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
     Log.debug(error, "Peripheral \(peripheral.nameOrUUID)"
       + "did update value for characteristic \(characteristic.uuid), "
       + "value: \(characteristic.value?.map { $0.hexString }.description ?? "nil")")
@@ -358,14 +383,14 @@ extension SkyPlugAdapter : CBPeripheralDelegate {
     }
   }
   
-  func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
+  public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
     Log.debug(error, "Peripheral \(peripheral.nameOrUUID) did write value for characteristic  \(characteristic.uuid)")
     if let error = error {
       didFail(error: error)
     }
   }
   
-  func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+  public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
     Log.debug(error, "Peripheral \(peripheral.nameOrUUID) did discover characteristics \(service.characteristics?.description ?? "nil") of service \(service.uuid)")
     if let error = error {
       didFail(error: error)
@@ -376,7 +401,7 @@ extension SkyPlugAdapter : CBPeripheralDelegate {
     subscribeOnUpdate()
   }
   
-  func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
+  public func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
     Log.debug(error, "Peripheral \(peripheral.nameOrUUID) did update notification state for characteristic \(characteristic.uuid)")
     if let error = error {
       didFail(error: error)
