@@ -176,8 +176,8 @@
 		9F31F3161FC0A08600A01E77 = {
 			isa = PBXGroup;
 			children = (
-				9F31F3211FC0A08600A01E77 /* skyplug */,
 				9F31F3381FC13CFB00A01E77 /* SkyPlug */,
+				9F31F3211FC0A08600A01E77 /* SkyPlug-CLI */,
 				9F6EDBAF1FC2122A0048E330 /* SkyPlug-macOS */,
 				9F6EDBC11FC212A70048E330 /* SkyPlug-iOS */,
 				9F6EDBD31FC212DF0048E330 /* SkyPlug-watchOS */,
@@ -198,14 +198,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9F31F3211FC0A08600A01E77 /* skyplug */ = {
+		9F31F3211FC0A08600A01E77 /* SkyPlug-CLI */ = {
 			isa = PBXGroup;
 			children = (
 				9F6EDC251FC222710048E330 /* Utils */,
 				9F31F3221FC0A08600A01E77 /* main.swift */,
 				9F31F3321FC0E14600A01E77 /* Arguments.swift */,
 			);
-			path = skyplug;
+			path = "SkyPlug-CLI";
 			sourceTree = "<group>";
 		};
 		9F31F3381FC13CFB00A01E77 /* SkyPlug */ = {
@@ -218,8 +218,7 @@
 				9F31F3411FC143BB00A01E77 /* Utils */,
 				9F31F34A1FC144EA00A01E77 /* Resources */,
 			);
-			name = SkyPlug;
-			path = skyplug/SkyPlug;
+			path = SkyPlug;
 			sourceTree = "<group>";
 		};
 		9F31F3411FC143BB00A01E77 /* Utils */ = {
