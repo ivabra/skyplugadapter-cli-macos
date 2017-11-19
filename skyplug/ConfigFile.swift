@@ -9,23 +9,6 @@
 import Foundation
 
 struct ConfigFile {
-
-  enum Keys: String {
-    case serviceUUID
-    case notifyCharacteristicUUID
-    case valueCharacteristicUUID
-    case onHexData
-    case offHexData
-    case queryHexData
-    case authorizationHexData
-    static var all: Set<Keys> = [.serviceUUID,
-                                 .notifyCharacteristicUUID,
-                                 .valueCharacteristicUUID,
-                                 .onHexData,
-                                 .offHexData,
-                                 .queryHexData,
-                                 .authorizationHexData]
-  }
   
   var serviceUUID: String!
   var notifyCharacteristicUUID: String!
@@ -36,20 +19,14 @@ struct ConfigFile {
   var authorizationHexData: Data!
   
   init(configDictionary: [String : String]) throws {
-    var dict = [Keys : String]()
-    configDictionary.forEach { (key, value) in
-      if let fileKey = Keys(rawValue: key) {
-        dict[fileKey] = value
-      }
-    }
-    
-    let lostKeys = Keys.all.subtracting(dict.keys)
+    let configKeys = configDictionary.keys.flatMap { Keys(rawValue: $0) }
+    let lostKeys = Keys.required.subtracting(configKeys)
     guard lostKeys.isEmpty else {
-      throw "No values for keys \(lostKeys)"
+      throw "Configuration file assert failure. No values for keys \(lostKeys.map { "'\($0.rawValue)'" }.joined(separator: ", "))"
     }
-    
-    for (key, value) in dict {
-      switch key {
+    configKeys.forEach {
+      let value = configDictionary[$0.rawValue]
+      switch $0 {
       case .serviceUUID:
         serviceUUID = value
       case .notifyCharacteristicUUID:
@@ -57,15 +34,35 @@ struct ConfigFile {
       case .valueCharacteristicUUID:
         valueCharacteristicUUID = value
       case .onHexData:
-        onHexData = value.asHexData
+        onHexData = value?.asHexData
       case .offHexData:
-        offHexData = value.asHexData
+        offHexData = value?.asHexData
       case .queryHexData:
-        queryHexData = value.asHexData
+        queryHexData = value?.asHexData
       case .authorizationHexData:
-        authorizationHexData = value.asHexData
+        authorizationHexData = value?.asHexData
       }
     }
   }
  
+}
+
+private extension ConfigFile {
+  enum Keys: String {
+    case serviceUUID
+    case notifyCharacteristicUUID
+    case valueCharacteristicUUID
+    case onHexData
+    case offHexData
+    case queryHexData
+    case authorizationHexData
+    
+    static let required: Set<Keys> = [.serviceUUID,
+                                      .notifyCharacteristicUUID,
+                                      .valueCharacteristicUUID,
+                                      .onHexData,
+                                      .offHexData,
+                                      .queryHexData,
+                                      .authorizationHexData]
+  }
 }
