@@ -4,15 +4,11 @@ The console app for controlling a Redmond Sky Plug power socket for macOS (10.10
 ## Using
 ```sh
 #!/bin/bash
-# Turn on the socket
-./skyplug on 
+./skyplug on # Turn on the socket. No output.
 
-# Turn off the socket
-./skyplug off 
+./skyplug off  # Turn off the socket. No output.
 
-# Query a status of the socket
-./skyplug query 
-on # can be 'on', 'off' or 'unknown'
+./skyplug query # Query a status of the socket. Output can be 'on', 'off' or 'unknown'
 ```
 ### Tracing
  Sometimes it can out an error
