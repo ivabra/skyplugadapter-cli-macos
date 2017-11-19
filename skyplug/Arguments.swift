@@ -45,9 +45,26 @@ enum Arguments {
   }
   
   static let config: [String: String] = {
-    guard let file = configFileURL, let configString = try? String(contentsOf: file) else {
+   
+    guard let file = configFileURL else {
+      Log.debug("No configuration file")
       return [:]
     }
+    
+    guard let configString: String = {
+      do {
+        return try String(contentsOf: file)
+      }
+      catch {
+        Log.debug(error, "Can't load configuration file because of error")
+        return nil
+      }
+      }() else {
+        return [:]
+    }
+    
+    Log.debug("Got config file:\n\(configString)")
+    
     var dictionary = [String : String]()
     configString.components(separatedBy: .newlines)
       .filter { $0.isEmpty == false}

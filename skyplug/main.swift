@@ -40,8 +40,9 @@ func main() throws {
 do {
  try main()
 } catch {
-  Log.debug(error)
-  fatalError(String(describing: error))
+  Log.debug(error, "Finished with errors")
+  print("error:", error)
+  exit(1)
 }
 
 

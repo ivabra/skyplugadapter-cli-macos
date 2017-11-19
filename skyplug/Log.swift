@@ -13,28 +13,31 @@ extension String {
 }
 
 enum Log {
+  
   static var debugMode: Bool = false
+  
   static var dateFormat: DateFormatter = {
     let df = DateFormatter()
     df.dateFormat = "yyyy-MM-dd hh:mm:ss.SSS"
     return df
   }()
   
+  private static var nowString: String {
+    return dateFormat.string(from: Date())
+  }
+  
   static func debug<T>(_ arg: @autoclosure () -> T) {
     if debugMode {
-      let date = Date()
-      print(dateFormat.string(from: date), arg(), separator: .logSeparator)
+      print(nowString, arg(), separator: .logSeparator)
     }
   }
   
-  static func debug<T>(_ arg: @autoclosure () -> (T, Error?)) {
+  static func debug<T>(_ error: Error?, _ arg: @autoclosure () -> T) {
     if debugMode {
-      let date = Date()
-      let (value, error) = arg()
       if let error = error {
-        print(dateFormat.string(from: date), value, error, separator: .logSeparator)
+        print(nowString, arg(), "Error: \(error)", separator: .logSeparator)
       } else {
-        print(dateFormat.string(from: date), value, separator: .logSeparator)
+        print(nowString, arg(), separator: .logSeparator)
       }
     }
   }

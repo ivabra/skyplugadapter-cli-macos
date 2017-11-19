@@ -37,14 +37,12 @@ struct ConfigFile {
   
   init(configDictionary: [String : String]) throws {
     var dict = [Keys : String]()
-    Log.debug("Creating config file from dictionary \(configDictionary)")
-    
     configDictionary.forEach { (key, value) in
       if let fileKey = Keys(rawValue: key) {
         dict[fileKey] = value
       }
     }
-  
+    
     let lostKeys = Keys.all.subtracting(dict.keys)
     guard lostKeys.isEmpty else {
       throw "No values for keys \(lostKeys)"
