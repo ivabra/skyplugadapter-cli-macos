@@ -1,0 +1,7 @@
+serviceUUID=6E400001-B5A3-F393-E0A9-E50E24DCCA9E
+notifyCharacteristicUUID=6E400003-B5A3-F393-E0A9-E50E24DCCA9E
+valueCharacteristicUUID=6E400002-B5A3-F393-E0A9-E50E24DCCA9E
+onHexData=550103aa
+offHexData=550204aa
+queryHexData=550006aa
+authorizationHexData=55aaffb54c75b1b40c88efaa

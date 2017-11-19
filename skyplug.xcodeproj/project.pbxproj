@@ -8,23 +8,50 @@
 
 /* Begin PBXBuildFile section */
 		9F31F3231FC0A08600A01E77 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31F3221FC0A08600A01E77 /* main.swift */; };
+		9F31F32C1FC0BC8600A01E77 /* SkyPlugAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31F32B1FC0BC8600A01E77 /* SkyPlugAdapter.swift */; };
+		9F31F32E1FC0CDD100A01E77 /* SkyPlugAdapterSyncWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31F32D1FC0CDD100A01E77 /* SkyPlugAdapterSyncWrapper.swift */; };
+		9F31F3311FC0DFE500A01E77 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31F3301FC0DFE500A01E77 /* Log.swift */; };
+		9F31F3331FC0E14600A01E77 /* Arguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31F3321FC0E14600A01E77 /* Arguments.swift */; };
+		9F31F3351FC1260B00A01E77 /* ConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31F3341FC1260B00A01E77 /* ConfigFile.swift */; };
+		9F31F3371FC130C500A01E77 /* skyplugfile in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9F31F3361FC12CCF00A01E77 /* skyplugfile */; };
+		9F31F33A1FC13D2500A01E77 /* SkyPlugAdapterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31F3391FC13D2500A01E77 /* SkyPlugAdapterState.swift */; };
+		9F31F33C1FC13D4000A01E77 /* SkyPlugAdapterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31F33B1FC13D4000A01E77 /* SkyPlugAdapterDelegate.swift */; };
+		9F31F33E1FC1427000A01E77 /* SkyPlugSyncAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31F33D1FC1427000A01E77 /* SkyPlugSyncAdapter.swift */; };
+		9F31F3401FC143A900A01E77 /* SkyPlugAdapterMakeDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31F33F1FC143A900A01E77 /* SkyPlugAdapterMakeDefault.swift */; };
+		9F31F3431FC143CE00A01E77 /* UInt8+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31F3421FC143CE00A01E77 /* UInt8+HexString.swift */; };
+		9F31F3451FC143EC00A01E77 /* CBManagerState+Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31F3441FC143EC00A01E77 /* CBManagerState+Description.swift */; };
+		9F31F3471FC143FF00A01E77 /* String+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31F3461FC143FF00A01E77 /* String+Hex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		9F31F31D1FC0A08600A01E77 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
+				9F31F3371FC130C500A01E77 /* skyplugfile in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		9F31F31F1FC0A08600A01E77 /* PowerAdapterConnector */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PowerAdapterConnector; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F31F3221FC0A08600A01E77 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		9F31F32B1FC0BC8600A01E77 /* SkyPlugAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyPlugAdapter.swift; sourceTree = "<group>"; };
+		9F31F32D1FC0CDD100A01E77 /* SkyPlugAdapterSyncWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyPlugAdapterSyncWrapper.swift; sourceTree = "<group>"; };
+		9F31F3301FC0DFE500A01E77 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		9F31F3321FC0E14600A01E77 /* Arguments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arguments.swift; sourceTree = "<group>"; };
+		9F31F3341FC1260B00A01E77 /* ConfigFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigFile.swift; sourceTree = "<group>"; };
+		9F31F3361FC12CCF00A01E77 /* skyplugfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = skyplugfile; sourceTree = "<group>"; };
+		9F31F3391FC13D2500A01E77 /* SkyPlugAdapterState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyPlugAdapterState.swift; sourceTree = "<group>"; };
+		9F31F33B1FC13D4000A01E77 /* SkyPlugAdapterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyPlugAdapterDelegate.swift; sourceTree = "<group>"; };
+		9F31F33D1FC1427000A01E77 /* SkyPlugSyncAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyPlugSyncAdapter.swift; sourceTree = "<group>"; };
+		9F31F33F1FC143A900A01E77 /* SkyPlugAdapterMakeDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyPlugAdapterMakeDefault.swift; sourceTree = "<group>"; };
+		9F31F3421FC143CE00A01E77 /* UInt8+HexString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt8+HexString.swift"; sourceTree = "<group>"; };
+		9F31F3441FC143EC00A01E77 /* CBManagerState+Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CBManagerState+Description.swift"; sourceTree = "<group>"; };
+		9F31F3461FC143FF00A01E77 /* String+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Hex.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +68,7 @@
 		9F31F3161FC0A08600A01E77 = {
 			isa = PBXGroup;
 			children = (
-				9F31F3211FC0A08600A01E77 /* PowerAdapterConnector */,
+				9F31F3211FC0A08600A01E77 /* skyplug */,
 				9F31F3201FC0A08600A01E77 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,20 +81,73 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9F31F3211FC0A08600A01E77 /* PowerAdapterConnector */ = {
+		9F31F3211FC0A08600A01E77 /* skyplug */ = {
 			isa = PBXGroup;
 			children = (
 				9F31F3221FC0A08600A01E77 /* main.swift */,
+				9F31F3301FC0DFE500A01E77 /* Log.swift */,
+				9F31F3321FC0E14600A01E77 /* Arguments.swift */,
+				9F31F3341FC1260B00A01E77 /* ConfigFile.swift */,
+				9F31F3411FC143BB00A01E77 /* Utils */,
+				9F31F3381FC13CFB00A01E77 /* SkyPlug */,
+				9F31F34A1FC144EA00A01E77 /* Resources */,
 			);
-			path = PowerAdapterConnector;
+			path = skyplug;
+			sourceTree = "<group>";
+		};
+		9F31F3381FC13CFB00A01E77 /* SkyPlug */ = {
+			isa = PBXGroup;
+			children = (
+				9F31F3491FC144BF00A01E77 /* SyncWrapper */,
+				9F31F3481FC144AE00A01E77 /* Adapter */,
+				9F31F33F1FC143A900A01E77 /* SkyPlugAdapterMakeDefault.swift */,
+			);
+			path = SkyPlug;
+			sourceTree = "<group>";
+		};
+		9F31F3411FC143BB00A01E77 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9F31F3421FC143CE00A01E77 /* UInt8+HexString.swift */,
+				9F31F3441FC143EC00A01E77 /* CBManagerState+Description.swift */,
+				9F31F3461FC143FF00A01E77 /* String+Hex.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		9F31F3481FC144AE00A01E77 /* Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				9F31F32B1FC0BC8600A01E77 /* SkyPlugAdapter.swift */,
+				9F31F3391FC13D2500A01E77 /* SkyPlugAdapterState.swift */,
+				9F31F33B1FC13D4000A01E77 /* SkyPlugAdapterDelegate.swift */,
+			);
+			path = Adapter;
+			sourceTree = "<group>";
+		};
+		9F31F3491FC144BF00A01E77 /* SyncWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				9F31F33D1FC1427000A01E77 /* SkyPlugSyncAdapter.swift */,
+				9F31F32D1FC0CDD100A01E77 /* SkyPlugAdapterSyncWrapper.swift */,
+			);
+			path = SyncWrapper;
+			sourceTree = "<group>";
+		};
+		9F31F34A1FC144EA00A01E77 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9F31F3361FC12CCF00A01E77 /* skyplugfile */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9F31F31E1FC0A08600A01E77 /* PowerAdapterConnector */ = {
+		9F31F31E1FC0A08600A01E77 /* skyplug */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9F31F3261FC0A08600A01E77 /* Build configuration list for PBXNativeTarget "PowerAdapterConnector" */;
+			buildConfigurationList = 9F31F3261FC0A08600A01E77 /* Build configuration list for PBXNativeTarget "skyplug" */;
 			buildPhases = (
 				9F31F31B1FC0A08600A01E77 /* Sources */,
 				9F31F31C1FC0A08600A01E77 /* Frameworks */,
@@ -77,7 +157,7 @@
 			);
 			dependencies = (
 			);
-			name = PowerAdapterConnector;
+			name = skyplug;
 			productName = PowerAdapterConnector;
 			productReference = 9F31F31F1FC0A08600A01E77 /* PowerAdapterConnector */;
 			productType = "com.apple.product-type.tool";
@@ -98,7 +178,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9F31F31A1FC0A08600A01E77 /* Build configuration list for PBXProject "PowerAdapterConnector" */;
+			buildConfigurationList = 9F31F31A1FC0A08600A01E77 /* Build configuration list for PBXProject "skyplug" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -110,7 +190,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9F31F31E1FC0A08600A01E77 /* PowerAdapterConnector */,
+				9F31F31E1FC0A08600A01E77 /* skyplug */,
 			);
 		};
 /* End PBXProject section */
@@ -120,6 +200,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F31F3451FC143EC00A01E77 /* CBManagerState+Description.swift in Sources */,
+				9F31F3311FC0DFE500A01E77 /* Log.swift in Sources */,
+				9F31F32C1FC0BC8600A01E77 /* SkyPlugAdapter.swift in Sources */,
+				9F31F33E1FC1427000A01E77 /* SkyPlugSyncAdapter.swift in Sources */,
+				9F31F3471FC143FF00A01E77 /* String+Hex.swift in Sources */,
+				9F31F33C1FC13D4000A01E77 /* SkyPlugAdapterDelegate.swift in Sources */,
+				9F31F3401FC143A900A01E77 /* SkyPlugAdapterMakeDefault.swift in Sources */,
+				9F31F3331FC0E14600A01E77 /* Arguments.swift in Sources */,
+				9F31F3351FC1260B00A01E77 /* ConfigFile.swift in Sources */,
+				9F31F3431FC143CE00A01E77 /* UInt8+HexString.swift in Sources */,
+				9F31F32E1FC0CDD100A01E77 /* SkyPlugAdapterSyncWrapper.swift in Sources */,
+				9F31F33A1FC13D2500A01E77 /* SkyPlugAdapterState.swift in Sources */,
 				9F31F3231FC0A08600A01E77 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,7 +348,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9F31F31A1FC0A08600A01E77 /* Build configuration list for PBXProject "PowerAdapterConnector" */ = {
+		9F31F31A1FC0A08600A01E77 /* Build configuration list for PBXProject "skyplug" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9F31F3241FC0A08600A01E77 /* Debug */,
@@ -265,7 +357,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9F31F3261FC0A08600A01E77 /* Build configuration list for PBXNativeTarget "PowerAdapterConnector" */ = {
+		9F31F3261FC0A08600A01E77 /* Build configuration list for PBXNativeTarget "skyplug" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9F31F3271FC0A08600A01E77 /* Debug */,
