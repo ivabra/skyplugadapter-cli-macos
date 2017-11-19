@@ -1,3 +1,9 @@
+[![Swift version](https://img.shields.io/badge/Swift-4.0-orange.svg?style=for-the-badge)]()
+[![iOS version](https://img.shields.io/badge/iOS-9.0-blue.svg?style=for-the-badge)]()
+[![macOS version](https://img.shields.io/badge/macOS-10.0-lightgray.svg?style=for-the-badge)]()
+[![watchOS version](https://img.shields.io/badge/watchOS-2.2-red.svg?style=for-the-badge)]()
+[![tvOS version](https://img.shields.io/badge/tvOS-10.0-green.svg?style=for-the-badge)]()
+
 # skyplugadapter-cli-macos
 The console app for controlling a Redmond Sky Plug power socket for macOS (10.10 and above).
 
@@ -22,7 +28,7 @@ Use `--debug` flag to get more output.
 ```
 #!/bin/bash
 ./skyplug on --debug
-2017-11-19 06:59:06.667 -> Got config file:
+2017-11-20 00:09:29.653802+0300 skyplug[48886:21256310] Got config file:
 serviceUUID=6E400001-B5A3-F393-E0A9-E50E24DCCA9E
 notifyCharacteristicUUID=6E400003-B5A3-F393-E0A9-E50E24DCCA9E
 valueCharacteristicUUID=6E400002-B5A3-F393-E0A9-E50E24DCCA9E
@@ -35,12 +41,12 @@ offStateName=off
 unknownStateName=unknown
 searchTimeout=5
 
-2017-11-19 06:59:06.679 -> CentralManager did update state: Powered on
-2017-11-19 06:59:06.680 -> Checking connected devices...
-2017-11-19 06:59:06.681 -> No connected devices. Begin scanning...
-2017-11-19 06:59:11.681 -> Fail! -> Error: A device is not found within 5.0 seconds
-2017-11-19 06:59:11.682 -> Did disconnect
-2017-11-19 06:59:11.682 -> Finished with errors -> Error: A device is not found within 5.0 seconds
+2017-11-20 00:09:29.668115+0300 skyplug[48886:21256363] CentralManager did update state: Powered on
+2017-11-20 00:09:29.668344+0300 skyplug[48886:21256310] Checking connected devices...
+2017-11-20 00:09:29.669117+0300 skyplug[48886:21256310] No connected devices. Begin scanning...
+2017-11-20 00:09:34.669818+0300 skyplug[48886:21256363] Fail! -> Error: A device is not found within 5.0 seconds
+Did disconnect
+2017-11-20 00:09:34.671378+0300 skyplug[48886:21256310] Finished with errors -> Error: A device is not found within 5.0 seconds
 error: A device is not found within 5.0 seconds
 ```
 ## Build
@@ -49,7 +55,7 @@ Use the build script `build.sh`:
 ```sh
 #!/bin/bash
 cd path/to/project_dir
-./build.sh
+./build-cli.sh
 ```
 After successful completion of script you can find the build at the `project_dir/build/Release` directory
 
