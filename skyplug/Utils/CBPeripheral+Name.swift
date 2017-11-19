@@ -11,6 +11,10 @@ import CoreBluetooth
 
 extension CBPeripheral {
   var nameOrUUID: String {
-    return name ?? identifier.description
+    if #available(OSX 10.13, *) {
+      return name ?? identifier.description
+    } else {
+      return name ?? "Untitled"
+    }
   }
 }
