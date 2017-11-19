@@ -9,6 +9,8 @@
 import Foundation
 
 protocol SkyPlugSyncAdapter: class {
+  var lastReceivedState: SkyPlugAdapterState? { get }
+  var searchTimeout: TimeInterval? { get set }
   func connect() throws
   func disconnect() throws
   func turnOn() throws

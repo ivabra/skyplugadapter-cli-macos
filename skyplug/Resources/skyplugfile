@@ -5,3 +5,7 @@ onHexData=550103aa
 offHexData=550204aa
 queryHexData=550006aa
 authorizationHexData=55aaffb54c75b1b40c88efaa
+onStateName=on
+offStateName=off
+unknownStateName=unknown
+searchTimeout=5

@@ -35,12 +35,29 @@ enum Arguments {
   
   static var configFileURL: URL? {
     var urls = defaultConfigFileNames.map { executionDirectory.appendingPathComponent($0) }
-    if let index = CommandLine.arguments.index(where: { $0.starts(with: configFileFlag) }) {
-      let file = CommandLine.arguments[index]
+    if let index = CommandLine.arguments.index(where: { $0.starts(with: configFileFlag) }), CommandLine.arguments.count > index {
+      let file = CommandLine.arguments[index + 1]
       urls.append(URL(fileURLWithPath: file))
       urls.append(executionDirectory.appendingPathComponent(file))
     }
     let fm = FileManager.default
     return urls.first { fm.fileExists(atPath: $0.path) }
   }
+  
+  static let config: [String: String] = {
+    guard let file = configFileURL, let configString = try? String(contentsOf: file) else {
+      return [:]
+    }
+    var dictionary = [String : String]()
+    configString.components(separatedBy: .newlines)
+      .filter { $0.isEmpty == false}
+      .forEach { string in
+        let all = string.split(separator: "=").map { String($0) }
+        if all.count < 2 {
+          return
+        }
+      dictionary[all[0]] = all[1]
+    }
+    return dictionary
+  }()
 }

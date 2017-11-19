@@ -8,8 +8,11 @@
 
 import Foundation
 
+extension String {
+  static let logSeparator = " -> "
+}
+
 enum Log {
-  
   static var debugMode: Bool = false
   static var dateFormat: DateFormatter = {
     let df = DateFormatter()
@@ -20,7 +23,7 @@ enum Log {
   static func debug<T>(_ arg: @autoclosure () -> T) {
     if debugMode {
       let date = Date()
-      print(dateFormat.string(from: date), arg(), separator: " -> ")
+      print(dateFormat.string(from: date), arg(), separator: .logSeparator)
     }
   }
   
@@ -29,9 +32,9 @@ enum Log {
       let date = Date()
       let (value, error) = arg()
       if let error = error {
-        print(dateFormat.string(from: date), value, error, separator: " -> ")
+        print(dateFormat.string(from: date), value, error, separator: .logSeparator)
       } else {
-        print(dateFormat.string(from: date), value, separator: " -> ")
+        print(dateFormat.string(from: date), value, separator: .logSeparator)
       }
     }
   }

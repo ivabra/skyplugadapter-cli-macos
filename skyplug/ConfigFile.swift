@@ -35,23 +35,11 @@ struct ConfigFile {
   var queryHexData: Data!
   var authorizationHexData: Data!
   
-  init(file: URL) throws {
+  init(configDictionary: [String : String]) throws {
     var dict = [Keys : String]()
-    let string = try String(contentsOf: file)
+    Log.debug("Creating config file from dictionary \(configDictionary)")
     
-    Log.debug(string)
-    
-    string
-      .components(separatedBy: .newlines)
-      .filter { $0.isEmpty == false}
-      .flatMap { string -> (String, String)? in
-        Log.debug(string)
-      let all = string.split(separator: "=").map { String($0) }
-      if all.isEmpty {
-        return nil
-      }
-      return (all[0], all[1])
-    }.forEach { (key, value) in
+    configDictionary.forEach { (key, value) in
       if let fileKey = Keys(rawValue: key) {
         dict[fileKey] = value
       }

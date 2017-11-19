@@ -21,6 +21,8 @@
 		9F31F3431FC143CE00A01E77 /* UInt8+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31F3421FC143CE00A01E77 /* UInt8+HexString.swift */; };
 		9F31F3451FC143EC00A01E77 /* CBManagerState+Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31F3441FC143EC00A01E77 /* CBManagerState+Description.swift */; };
 		9F31F3471FC143FF00A01E77 /* String+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31F3461FC143FF00A01E77 /* String+Hex.swift */; };
+		9FC6AC411FC1C0DA00BFEE28 /* String+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC6AC401FC1C0DA00BFEE28 /* String+Error.swift */; };
+		9FC6AC431FC1C76500BFEE28 /* CBPeripheral+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC6AC421FC1C76500BFEE28 /* CBPeripheral+Name.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,7 +39,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9F31F31F1FC0A08600A01E77 /* PowerAdapterConnector */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PowerAdapterConnector; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F31F31F1FC0A08600A01E77 /* skyplug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = skyplug; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F31F3221FC0A08600A01E77 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		9F31F32B1FC0BC8600A01E77 /* SkyPlugAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyPlugAdapter.swift; sourceTree = "<group>"; };
 		9F31F32D1FC0CDD100A01E77 /* SkyPlugAdapterSyncWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyPlugAdapterSyncWrapper.swift; sourceTree = "<group>"; };
@@ -52,6 +54,8 @@
 		9F31F3421FC143CE00A01E77 /* UInt8+HexString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt8+HexString.swift"; sourceTree = "<group>"; };
 		9F31F3441FC143EC00A01E77 /* CBManagerState+Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CBManagerState+Description.swift"; sourceTree = "<group>"; };
 		9F31F3461FC143FF00A01E77 /* String+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Hex.swift"; sourceTree = "<group>"; };
+		9FC6AC401FC1C0DA00BFEE28 /* String+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Error.swift"; sourceTree = "<group>"; };
+		9FC6AC421FC1C76500BFEE28 /* CBPeripheral+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CBPeripheral+Name.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +80,7 @@
 		9F31F3201FC0A08600A01E77 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9F31F31F1FC0A08600A01E77 /* PowerAdapterConnector */,
+				9F31F31F1FC0A08600A01E77 /* skyplug */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -111,6 +115,8 @@
 				9F31F3421FC143CE00A01E77 /* UInt8+HexString.swift */,
 				9F31F3441FC143EC00A01E77 /* CBManagerState+Description.swift */,
 				9F31F3461FC143FF00A01E77 /* String+Hex.swift */,
+				9FC6AC401FC1C0DA00BFEE28 /* String+Error.swift */,
+				9FC6AC421FC1C76500BFEE28 /* CBPeripheral+Name.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -158,8 +164,8 @@
 			dependencies = (
 			);
 			name = skyplug;
-			productName = PowerAdapterConnector;
-			productReference = 9F31F31F1FC0A08600A01E77 /* PowerAdapterConnector */;
+			productName = skyplug;
+			productReference = 9F31F31F1FC0A08600A01E77 /* skyplug */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -201,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F31F3451FC143EC00A01E77 /* CBManagerState+Description.swift in Sources */,
+				9FC6AC411FC1C0DA00BFEE28 /* String+Error.swift in Sources */,
 				9F31F3311FC0DFE500A01E77 /* Log.swift in Sources */,
 				9F31F32C1FC0BC8600A01E77 /* SkyPlugAdapter.swift in Sources */,
 				9F31F33E1FC1427000A01E77 /* SkyPlugSyncAdapter.swift in Sources */,
@@ -210,6 +217,7 @@
 				9F31F3331FC0E14600A01E77 /* Arguments.swift in Sources */,
 				9F31F3351FC1260B00A01E77 /* ConfigFile.swift in Sources */,
 				9F31F3431FC143CE00A01E77 /* UInt8+HexString.swift in Sources */,
+				9FC6AC431FC1C76500BFEE28 /* CBPeripheral+Name.swift in Sources */,
 				9F31F32E1FC0CDD100A01E77 /* SkyPlugAdapterSyncWrapper.swift in Sources */,
 				9F31F33A1FC13D2500A01E77 /* SkyPlugAdapterState.swift in Sources */,
 				9F31F3231FC0A08600A01E77 /* main.swift in Sources */,

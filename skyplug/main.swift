@@ -15,14 +15,13 @@ func main() throws {
   guard let action = Arguments.action else {
     throw "No actions"
   }
- 
-  guard let configFile = Arguments.configFileURL else {
-    throw "No config file"
-  }
   
-  let file = try ConfigFile(file: configFile)
+  let file = try ConfigFile(configDictionary: Arguments.config)
   
   let adapter = SkyPlugAdapterMakeDefault(configFile: file)
+  if let timeoutString = Arguments.config["searchTimeout"], let timeout = TimeInterval(timeoutString) {
+    adapter.searchTimeout = timeout
+  }
   defer {
     try? adapter.disconnect()
   }

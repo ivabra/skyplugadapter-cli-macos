@@ -16,5 +16,5 @@ func SkyPlugAdapterMakeDefault(configFile file: ConfigFile) -> SkyPlugSyncAdapte
                                                            onData: file.onHexData,
                                                            offData: file.offHexData,
                                                            queryData: file.queryHexData,
-                                                           authorizationData: file.queryHexData))
+                                                           authorizationData: file.authorizationHexData))
 }

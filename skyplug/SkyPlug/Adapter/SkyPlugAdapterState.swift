@@ -13,12 +13,14 @@ enum SkyPlugAdapterState: UInt8, CustomStringConvertible {
   case off = 0x00
   case on = 0x02
   
-  static let unknownStateDescription: String = "unknown"
+  static var unknownStateDescription: String {
+   return Arguments.config["unknownStateName"] ?? "unknown"
+  }
   
   var description: String {
     switch self {
-    case .on: return "on"
-    case .off: return "off"
+    case .on: return Arguments.config["onStateName"] ?? "on"
+    case .off: return Arguments.config["offStateName"] ?? "off"
     }
   }
 }

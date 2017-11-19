@@ -11,9 +11,8 @@ import Foundation
 protocol SkyPlugAdapterDelegate: class {
   func scannedDidReady(_ scanner: SkyPlugAdapter)
   func scannedDidOn(_ scanner: SkyPlugAdapter, error: Error?)
-  func scannedDidOff(_ scanner: SkyPlugAdapter, error: Error?)
-  func scannedDidReadState(_ scanner: SkyPlugAdapter, data: Data)
+  func scannedDidOff(_ scanner: SkyPlugAdapter, error: Error?) 
   func scannedDidDisconnect(_ scanner: SkyPlugAdapter, error: Error?)
-  func scannedDidFinishedQuery(_ scanner: SkyPlugAdapter, error: Error?)
+  func scannedDidFinishQueryDeviceState(_ scanner: SkyPlugAdapter, error: Error?)
   func scannedDidFailWithError(_ scanner: SkyPlugAdapter, fail: Error?)
 }
