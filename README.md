@@ -1,6 +1,5 @@
 # skyplugadapter-cli-macos
-The console app for controlling a Redmond Sky Plug power socket
-Only for macOS 10.10 and above
+The console app for controlling a Redmond Sky Plug power socket for macOS (10.10 and above).
 
 ## Using
 ```sh
