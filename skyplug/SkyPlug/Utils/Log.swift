@@ -21,7 +21,7 @@ public enum Log {
   static func debug<T>(_ error: Error?, _ arg: @autoclosure () -> T) {
     if debugMode {
       if let error = error {
-        NSLog("\(arg()); Error: \(error)")
+        NSLog("\(arg()) -> Error: \(error)")
       } else {
         print("\(arg())")
       }
