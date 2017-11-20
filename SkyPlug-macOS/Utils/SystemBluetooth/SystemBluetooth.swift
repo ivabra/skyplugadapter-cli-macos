@@ -19,13 +19,13 @@ private extension CFString {
 }
 
 
-enum SystemBluetooth {
+public enum SystemBluetooth {
   
-  enum Errors: Error, LocalizedError {
+  public enum Errors: Error, LocalizedError {
     case noAccessToSystemConfiguration
     case systemError(error: CFErrorWrapper)
     
-    var errorDescription: String? {
+    public var errorDescription: String? {
       switch self {
       case .noAccessToSystemConfiguration:
         return "No access to system configuration"
@@ -42,7 +42,7 @@ enum SystemBluetooth {
     return prefs
   }
   
-  static func findPairedDevices() throws -> Set<SystemBluetooth.Device> {
+  public static func findPairedDevices() throws -> Set<SystemBluetooth.Device> {
     
     let prefs = try bluetoothPreferences()
     
@@ -63,30 +63,30 @@ enum SystemBluetooth {
     return filtered
   }
   
-  static func findPairedDevices(byName: (String) -> Bool) throws -> Set<Device> {
+  public static func findPairedDevices(byName: (String) -> Bool) throws -> Set<Device> {
     return Set(try findPairedDevices().filter { $0.name.map(byName) == true })
   }
   
-  static func unpairAllDevicesWithName(_ name: (String) -> Bool) throws {
+  public static func unpairAllDevicesWithName(_ name: (String) -> Bool) throws {
     for device in try findPairedDevices(byName: name) {
       try unpairDevice(withAddress: device.address)
     }
   }
   
-  static func unpairDevice(withAddress address: String) throws {
+  public static func unpairDevice(withAddress address: String) throws {
     try unpairClassicDevice(withAddress: address)
     try unpairLEDevice(withAddress: address)
   }
   
-  static func unpairClassicDevice(withAddress address: String) throws {
+  public static func unpairClassicDevice(withAddress address: String) throws {
     try unpairDevice(withAddress: address, preferencesKey: .pairedDevicesKey)
   }
   
-  static func unpairLEDevice(withAddress address: String) throws {
+  public static func unpairLEDevice(withAddress address: String) throws {
     try unpairDevice(withAddress: address, preferencesKey: .lePairedDevicesKey)
   }
   
-  static func unpairDevice(withAddress address: String, preferencesKey: CFString) throws {
+  public static func unpairDevice(withAddress address: String, preferencesKey: CFString) throws {
     let prefs = try bluetoothPreferences()
     guard var pairedDevices = SCPreferencesGetValue(prefs, preferencesKey) as? [String] else {
       return

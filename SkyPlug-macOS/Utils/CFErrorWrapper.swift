@@ -8,28 +8,28 @@
 
 import Foundation
 
-struct CFErrorWrapper: CustomNSError, LocalizedError {
-  let wrapped: CFError
-  static let errorDomain: String = "Core Foundation"
-  var errorCode: Int {
+public  struct CFErrorWrapper: CustomNSError, LocalizedError {
+  public let wrapped: CFError
+  public static let errorDomain: String = "Core Foundation"
+  public var errorCode: Int {
     return CFErrorGetCode(wrapped)
   }
-  var errorUserInfo: [String : Any] {
+  public var errorUserInfo: [String : Any] {
     return CFErrorCopyUserInfo(wrapped) as? [String : Any] ?? [:]
   }
-  var recoverySuggestion: String? {
+  public var recoverySuggestion: String? {
     return CFErrorCopyRecoverySuggestion(wrapped) as String?
   }
-  var errorDescription: String? {
+  public var errorDescription: String? {
     return CFErrorCopyDescription(wrapped) as String?
   }
-  var failureReason: String? {
+  public var failureReason: String? {
     return CFErrorCopyFailureReason(wrapped) as String?
   }
 }
 
 extension CFError {
-  func wrapping() -> CFErrorWrapper {
+  public func wrapping() -> CFErrorWrapper {
     return CFErrorWrapper(wrapped: self)
   }
 }

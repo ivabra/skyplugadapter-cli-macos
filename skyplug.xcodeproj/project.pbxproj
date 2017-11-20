@@ -29,6 +29,9 @@
 		9F586CA81FC25236002E5CD6 /* SkyPlugAdapterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F586CA51FC25236002E5CD6 /* SkyPlugAdapterError.swift */; };
 		9F586CA91FC25236002E5CD6 /* SkyPlugAdapterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F586CA51FC25236002E5CD6 /* SkyPlugAdapterError.swift */; };
 		9F586CAA1FC25236002E5CD6 /* SkyPlugAdapterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F586CA51FC25236002E5CD6 /* SkyPlugAdapterError.swift */; };
+		9F6760711FC272C4005B7D9E /* SystemBluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F586C9D1FC24E51002E5CD6 /* SystemBluetooth.swift */; };
+		9F6760721FC272C4005B7D9E /* SystemBluetoothDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F586CA31FC24EFE002E5CD6 /* SystemBluetoothDevice.swift */; };
+		9F6760731FC272EA005B7D9E /* CFErrorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F586C9F1FC24E72002E5CD6 /* CFErrorWrapper.swift */; };
 		9F6EDBB21FC2122A0048E330 /* SkyPlug_macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F6EDBB01FC2122A0048E330 /* SkyPlug_macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F6EDBB61FC2125D0048E330 /* SkyPlugSyncAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31F33D1FC1427000A01E77 /* SkyPlugSyncAdapter.swift */; };
 		9F6EDBB71FC2125D0048E330 /* SkyPlugAdapterSyncWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31F32D1FC0CDD100A01E77 /* SkyPlugAdapterSyncWrapper.swift */; };
@@ -283,9 +286,19 @@
 			path = SystemBluetooth;
 			sourceTree = "<group>";
 		};
+		9F6760741FC27345005B7D9E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9F586C9F1FC24E72002E5CD6 /* CFErrorWrapper.swift */,
+				9F586CA11FC24EE6002E5CD6 /* SystemBluetooth */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		9F6EDBAF1FC2122A0048E330 /* SkyPlug-macOS */ = {
 			isa = PBXGroup;
 			children = (
+				9F6760741FC27345005B7D9E /* Utils */,
 				9F6EDBB01FC2122A0048E330 /* SkyPlug_macOS.h */,
 				9F6EDBB11FC2122A0048E330 /* Info.plist */,
 			);
@@ -322,10 +335,8 @@
 		9F6EDC251FC222710048E330 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				9F586CA11FC24EE6002E5CD6 /* SystemBluetooth */,
 				9F6EDC261FC2242F0048E330 /* Output.swift */,
 				9FC6AC401FC1C0DA00BFEE28 /* String+Error.swift */,
-				9F586C9F1FC24E72002E5CD6 /* CFErrorWrapper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -469,7 +480,7 @@
 				TargetAttributes = {
 					9F31F31E1FC0A08600A01E77 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					9F6EDBAD1FC2122A0048E330 = {
 						CreatedOnToolsVersion = 9.2;
@@ -578,6 +589,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F6760711FC272C4005B7D9E /* SystemBluetooth.swift in Sources */,
+				9F6760721FC272C4005B7D9E /* SystemBluetoothDevice.swift in Sources */,
 				9F6EDBB81FC2125D0048E330 /* SkyPlugAdapter.swift in Sources */,
 				9F6EDC211FC21F550048E330 /* SkyPlugAdapterMakeDefault.swift in Sources */,
 				9F6EDBB91FC2125D0048E330 /* SkyPlugAdapterState.swift in Sources */,
@@ -588,6 +601,7 @@
 				9F6EDBB61FC2125D0048E330 /* SkyPlugSyncAdapter.swift in Sources */,
 				9F6EDC0E1FC2139F0048E330 /* UInt8+HexString.swift in Sources */,
 				9F6EDBF91FC2138F0048E330 /* CBPeripheral+Name.swift in Sources */,
+				9F6760731FC272EA005B7D9E /* CFErrorWrapper.swift in Sources */,
 				9F6EDC1F1FC219C60048E330 /* ConfigFileReader.swift in Sources */,
 				9F6EDC121FC219480048E330 /* SkyPlugAdapterConfigFile.swift in Sources */,
 				9F6EDBF61FC2138F0048E330 /* CBManagerState+Description.swift in Sources */,
@@ -770,7 +784,7 @@
 		9F31F3271FC0A08600A01E77 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -783,7 +797,7 @@
 		9F31F3281FC0A08600A01E77 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -850,7 +864,7 @@
 		9F6EDBC61FC212A70048E330 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -877,7 +891,7 @@
 		9F6EDBC71FC212A70048E330 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;

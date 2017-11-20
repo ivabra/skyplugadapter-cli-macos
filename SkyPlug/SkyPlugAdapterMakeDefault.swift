@@ -9,8 +9,8 @@
 import Foundation
 import CoreBluetooth
 
-public func SkyPlugAdapterMakeDefault(bundle: Bundle = .main, fileName: String = "skyplugfile" ) throws -> SkyPlugSyncAdapter? {
-  guard let url = bundle.url(forResource: fileName, withExtension: nil) else {
+public func SkyPlugAdapterMakeDefault(bundle: Bundle = Bundle(for: SkyPlugAdapter.self), fileName: String = "skyplugfile" ) throws -> SkyPlugSyncAdapter? {
+  guard let url = bundle.url(forResource: fileName, withExtension: "") else {
     return nil
   }
   return try SkyPlugAdapterMakeDefault(configFileURL: url)

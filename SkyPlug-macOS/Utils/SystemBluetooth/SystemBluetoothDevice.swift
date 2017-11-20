@@ -13,27 +13,27 @@ private extension String {
   static let deviceDisplayNameKey = "displayName"
 }
 
-extension SystemBluetooth {
-  struct Device {
+public extension SystemBluetooth {
+  public struct Device {
     let address: String
     let info: [String : Any]
   }
 }
 
 extension SystemBluetooth.Device {
-  var name: String? {
+  public var name: String? {
     return info[.deviceNameKey] as? String
   }
-  var displayName: String? {
+  public var displayName: String? {
     return info[.deviceDisplayNameKey] as? String
   }
 }
 
 extension SystemBluetooth.Device : Hashable {
-  var hashValue: Int {
+  public var hashValue: Int {
     return address.hashValue
   }
-  static func == (left: SystemBluetooth.Device, right: SystemBluetooth.Device) -> Bool {
+  public static func == (left: SystemBluetooth.Device, right: SystemBluetooth.Device) -> Bool {
     return left.address == right.address
   }
 }
