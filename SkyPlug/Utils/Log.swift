@@ -23,7 +23,7 @@ public enum Log {
       if let error = error {
         NSLog("\(arg()) -> Error: \(error)")
       } else {
-        print("\(arg())")
+        NSLog("\(arg())")
       }
     }
   }

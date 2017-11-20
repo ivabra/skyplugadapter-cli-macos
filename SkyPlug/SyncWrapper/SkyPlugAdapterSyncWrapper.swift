@@ -77,6 +77,10 @@ public final class SkyPlugAdapterSyncWrapper {
 
 extension SkyPlugAdapterSyncWrapper : SkyPlugSyncAdapter {
   
+  public var deviceName: String? {
+    return wrapped.deviceName
+  }
+  
   public var searchTimeout: TimeInterval? {
     set {
       wrapped.searchTimeout = newValue

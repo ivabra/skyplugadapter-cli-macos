@@ -21,6 +21,14 @@
 		9F31F3431FC143CE00A01E77 /* UInt8+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31F3421FC143CE00A01E77 /* UInt8+HexString.swift */; };
 		9F31F3451FC143EC00A01E77 /* CBManagerState+Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31F3441FC143EC00A01E77 /* CBManagerState+Description.swift */; };
 		9F31F3471FC143FF00A01E77 /* String+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31F3461FC143FF00A01E77 /* String+Hex.swift */; };
+		9F586C9E1FC24E51002E5CD6 /* SystemBluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F586C9D1FC24E51002E5CD6 /* SystemBluetooth.swift */; };
+		9F586CA01FC24E72002E5CD6 /* CFErrorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F586C9F1FC24E72002E5CD6 /* CFErrorWrapper.swift */; };
+		9F586CA41FC24EFE002E5CD6 /* SystemBluetoothDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F586CA31FC24EFE002E5CD6 /* SystemBluetoothDevice.swift */; };
+		9F586CA61FC25236002E5CD6 /* SkyPlugAdapterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F586CA51FC25236002E5CD6 /* SkyPlugAdapterError.swift */; };
+		9F586CA71FC25236002E5CD6 /* SkyPlugAdapterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F586CA51FC25236002E5CD6 /* SkyPlugAdapterError.swift */; };
+		9F586CA81FC25236002E5CD6 /* SkyPlugAdapterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F586CA51FC25236002E5CD6 /* SkyPlugAdapterError.swift */; };
+		9F586CA91FC25236002E5CD6 /* SkyPlugAdapterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F586CA51FC25236002E5CD6 /* SkyPlugAdapterError.swift */; };
+		9F586CAA1FC25236002E5CD6 /* SkyPlugAdapterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F586CA51FC25236002E5CD6 /* SkyPlugAdapterError.swift */; };
 		9F6EDBB21FC2122A0048E330 /* SkyPlug_macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F6EDBB01FC2122A0048E330 /* SkyPlug_macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F6EDBB61FC2125D0048E330 /* SkyPlugSyncAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31F33D1FC1427000A01E77 /* SkyPlugSyncAdapter.swift */; };
 		9F6EDBB71FC2125D0048E330 /* SkyPlugAdapterSyncWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F31F32D1FC0CDD100A01E77 /* SkyPlugAdapterSyncWrapper.swift */; };
@@ -116,6 +124,10 @@
 		9F31F3421FC143CE00A01E77 /* UInt8+HexString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt8+HexString.swift"; sourceTree = "<group>"; };
 		9F31F3441FC143EC00A01E77 /* CBManagerState+Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CBManagerState+Description.swift"; sourceTree = "<group>"; };
 		9F31F3461FC143FF00A01E77 /* String+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Hex.swift"; sourceTree = "<group>"; };
+		9F586C9D1FC24E51002E5CD6 /* SystemBluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemBluetooth.swift; sourceTree = "<group>"; };
+		9F586C9F1FC24E72002E5CD6 /* CFErrorWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFErrorWrapper.swift; sourceTree = "<group>"; };
+		9F586CA31FC24EFE002E5CD6 /* SystemBluetoothDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemBluetoothDevice.swift; sourceTree = "<group>"; };
+		9F586CA51FC25236002E5CD6 /* SkyPlugAdapterError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyPlugAdapterError.swift; sourceTree = "<group>"; };
 		9F6EDBAE1FC2122A0048E330 /* SkyPlug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SkyPlug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6EDBB01FC2122A0048E330 /* SkyPlug_macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkyPlug_macOS.h; sourceTree = "<group>"; };
 		9F6EDBB11FC2122A0048E330 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -240,6 +252,7 @@
 				9F31F32B1FC0BC8600A01E77 /* SkyPlugAdapter.swift */,
 				9F31F3391FC13D2500A01E77 /* SkyPlugAdapterState.swift */,
 				9F31F33B1FC13D4000A01E77 /* SkyPlugAdapterDelegate.swift */,
+				9F586CA51FC25236002E5CD6 /* SkyPlugAdapterError.swift */,
 			);
 			path = Adapter;
 			sourceTree = "<group>";
@@ -259,6 +272,15 @@
 				9F31F3361FC12CCF00A01E77 /* skyplugfile */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		9F586CA11FC24EE6002E5CD6 /* SystemBluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				9F586C9D1FC24E51002E5CD6 /* SystemBluetooth.swift */,
+				9F586CA31FC24EFE002E5CD6 /* SystemBluetoothDevice.swift */,
+			);
+			path = SystemBluetooth;
 			sourceTree = "<group>";
 		};
 		9F6EDBAF1FC2122A0048E330 /* SkyPlug-macOS */ = {
@@ -300,8 +322,10 @@
 		9F6EDC251FC222710048E330 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				9F586CA11FC24EE6002E5CD6 /* SystemBluetooth */,
 				9F6EDC261FC2242F0048E330 /* Output.swift */,
 				9FC6AC401FC1C0DA00BFEE28 /* String+Error.swift */,
+				9F586C9F1FC24E72002E5CD6 /* CFErrorWrapper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -445,7 +469,7 @@
 				TargetAttributes = {
 					9F31F31E1FC0A08600A01E77 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					9F6EDBAD1FC2122A0048E330 = {
 						CreatedOnToolsVersion = 9.2;
@@ -529,6 +553,7 @@
 				9F31F3451FC143EC00A01E77 /* CBManagerState+Description.swift in Sources */,
 				9FC6AC411FC1C0DA00BFEE28 /* String+Error.swift in Sources */,
 				9F31F3311FC0DFE500A01E77 /* Log.swift in Sources */,
+				9F586C9E1FC24E51002E5CD6 /* SystemBluetooth.swift in Sources */,
 				9F31F32C1FC0BC8600A01E77 /* SkyPlugAdapter.swift in Sources */,
 				9F31F33E1FC1427000A01E77 /* SkyPlugSyncAdapter.swift in Sources */,
 				9F6EDC271FC2242F0048E330 /* Output.swift in Sources */,
@@ -539,8 +564,11 @@
 				9F31F3351FC1260B00A01E77 /* SkyPlugAdapterConfigFile.swift in Sources */,
 				9F6EDC1B1FC219C30048E330 /* ConfigFileReader.swift in Sources */,
 				9F31F3431FC143CE00A01E77 /* UInt8+HexString.swift in Sources */,
+				9F586CA01FC24E72002E5CD6 /* CFErrorWrapper.swift in Sources */,
 				9FC6AC431FC1C76500BFEE28 /* CBPeripheral+Name.swift in Sources */,
 				9F31F32E1FC0CDD100A01E77 /* SkyPlugAdapterSyncWrapper.swift in Sources */,
+				9F586CA41FC24EFE002E5CD6 /* SystemBluetoothDevice.swift in Sources */,
+				9F586CA61FC25236002E5CD6 /* SkyPlugAdapterError.swift in Sources */,
 				9F31F33A1FC13D2500A01E77 /* SkyPlugAdapterState.swift in Sources */,
 				9F31F3231FC0A08600A01E77 /* main.swift in Sources */,
 			);
@@ -554,6 +582,7 @@
 				9F6EDC211FC21F550048E330 /* SkyPlugAdapterMakeDefault.swift in Sources */,
 				9F6EDBB91FC2125D0048E330 /* SkyPlugAdapterState.swift in Sources */,
 				9F6EDBF11FC2135C0048E330 /* Log.swift in Sources */,
+				9F586CA71FC25236002E5CD6 /* SkyPlugAdapterError.swift in Sources */,
 				9F6EDBB71FC2125D0048E330 /* SkyPlugAdapterSyncWrapper.swift in Sources */,
 				9F6EDBF71FC2138F0048E330 /* String+Hex.swift in Sources */,
 				9F6EDBB61FC2125D0048E330 /* SkyPlugSyncAdapter.swift in Sources */,
@@ -574,6 +603,7 @@
 				9F6EDC221FC21F550048E330 /* SkyPlugAdapterMakeDefault.swift in Sources */,
 				9F6EDBCB1FC212CB0048E330 /* SkyPlugAdapterState.swift in Sources */,
 				9F6EDBF21FC2135C0048E330 /* Log.swift in Sources */,
+				9F586CA81FC25236002E5CD6 /* SkyPlugAdapterError.swift in Sources */,
 				9F6EDBC91FC212CB0048E330 /* SkyPlugAdapterSyncWrapper.swift in Sources */,
 				9F6EDBFC1FC213900048E330 /* String+Hex.swift in Sources */,
 				9F6EDBC81FC212CB0048E330 /* SkyPlugSyncAdapter.swift in Sources */,
@@ -594,6 +624,7 @@
 				9F6EDC231FC21F550048E330 /* SkyPlugAdapterMakeDefault.swift in Sources */,
 				9F6EDBDD1FC212E70048E330 /* SkyPlugAdapterState.swift in Sources */,
 				9F6EDBF31FC2135D0048E330 /* Log.swift in Sources */,
+				9F586CA91FC25236002E5CD6 /* SkyPlugAdapterError.swift in Sources */,
 				9F6EDBDB1FC212E70048E330 /* SkyPlugAdapterSyncWrapper.swift in Sources */,
 				9F6EDC061FC213910048E330 /* String+Hex.swift in Sources */,
 				9F6EDBDA1FC212E70048E330 /* SkyPlugSyncAdapter.swift in Sources */,
@@ -614,6 +645,7 @@
 				9F6EDC241FC21F550048E330 /* SkyPlugAdapterMakeDefault.swift in Sources */,
 				9F6EDBEF1FC213070048E330 /* SkyPlugAdapterState.swift in Sources */,
 				9F6EDBF41FC2135D0048E330 /* Log.swift in Sources */,
+				9F586CAA1FC25236002E5CD6 /* SkyPlugAdapterError.swift in Sources */,
 				9F6EDBED1FC213070048E330 /* SkyPlugAdapterSyncWrapper.swift in Sources */,
 				9F6EDC0B1FC213920048E330 /* String+Hex.swift in Sources */,
 				9F6EDBEC1FC213070048E330 /* SkyPlugSyncAdapter.swift in Sources */,

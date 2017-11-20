@@ -10,24 +10,20 @@ import Cocoa
 
 Log.debugMode = Arguments.debug
 
-func initializeAdapter() throws -> SkyPlugSyncAdapter {
-  let config = try SkyPlugAdapterConfig(configDictionary: Arguments.config)
-  let adapter = SkyPlugAdapterMakeDefault(config: config)
-  if let timeoutString = Arguments.config["searchTimeout"], let timeout = TimeInterval(timeoutString) {
-    adapter.searchTimeout = timeout
-  }
-  return adapter
-}
-
 func main() throws {
   guard let action = Arguments.action else {
     throw "No actions"
   }
   let adapter = try initializeAdapter()
+  var deviceName: String?
   defer {
-    try? adapter.disconnect()
+    disconnectAdapter(adapter)
+    if let device = deviceName {
+      disconnectDevice(name: device)
+    }
   }
   try adapter.connect()
+  deviceName = adapter.deviceName
   switch action {
   case .on:
     try adapter.turnOn()
@@ -39,8 +35,33 @@ func main() throws {
   }
 }
 
+func initializeAdapter() throws -> SkyPlugSyncAdapter {
+  let config = try SkyPlugAdapterConfig(configDictionary: Arguments.config)
+  let adapter = SkyPlugAdapterMakeDefault(config: config)
+  if let timeoutString = Arguments.config["searchTimeout"], let timeout = TimeInterval(timeoutString) {
+    adapter.searchTimeout = timeout
+  }
+  return adapter
+}
+
+func disconnectDevice(name: String) {
+  do {
+    try SystemBluetooth.unpairAllDevicesWithName { $0.contains(name) }
+  } catch {
+    Log.debug(error, "Failed to unpair device")
+  }
+}
+
+func disconnectAdapter(_ adapter: SkyPlugSyncAdapter) {
+  do {
+    try adapter.disconnect()
+  } catch {
+    Log.debug(error, "Failed to disconnect BLE device")
+  }
+}
+
 do {
- try main()
+  try main()
 } catch {
   Log.debug(error, "Finished with errors")
   print("error:", error)
