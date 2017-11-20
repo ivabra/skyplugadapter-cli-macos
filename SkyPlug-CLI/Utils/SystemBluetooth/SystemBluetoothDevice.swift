@@ -10,7 +10,7 @@ import Foundation
 
 private extension String {
   static let deviceNameKey = "Name"
-  static let deviceDisplayNameKey = "Name"
+  static let deviceDisplayNameKey = "displayName"
 }
 
 extension SystemBluetooth {
