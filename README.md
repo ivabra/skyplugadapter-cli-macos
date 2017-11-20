@@ -49,7 +49,7 @@ Did disconnect
 2017-11-20 00:09:34.671378+0300 skyplug[48886:21256310] Finished with errors -> Error: A device is not found within 5.0 seconds
 error: A device is not found within 5.0 seconds
 ```
-## Build
+## Building
 It requires to have installed XCode on your build machine.
 Use the build script `build.sh`:
 ```sh
@@ -75,14 +75,14 @@ unknownStateName=unknown
 searchTimeout=5
 ```
 ### Configuration keys
-* `serviceUUID`: GATT service identifier
-* `notifyCharacteristicUUID`:  GATT notification characteristic identifier;
-* `valueCharacteristicUUID`: GATT value characteristic identifier;
-* `onHexData`: Bytes string in hex format that should be sended for **truninig on** the socket;
-* `offHexData`: Same as for `onHexData` but for **trunning off**;
-* `queryHexData`: Same but just for *requesting the status* of socket;
-* `onStateName`: Overrides the default "on" name of the `ON` socket status;
-* `offStateName`: Overrides the default "off" name of the `OFF` socket status;
+* `serviceUUID`: GATT service identifier.
+* `notifyCharacteristicUUID`:  GATT notification characteristic identifier.
+* `valueCharacteristicUUID`: GATT value characteristic identifier.
+* `onHexData`: Bytes string in hex format that should be sended to **truning on** the socket.
+* `offHexData`: Same as `onHexData` but for **turning off**.
+* `queryHexData`: Same but for **requesting the status** of socket.
+* `onStateName`: Overrides the default "on" output name of the `ON` socket status.
+* `offStateName`: Overrides the default "off" output name of the `OFF` socket status.
 * `unknownStateName`: Overrides the default "unknown" name of the state when the socket is not responding.
 * `searchTimeout`: A optional paramenter for stopping the app if it can't find the lock within given duration.
 
